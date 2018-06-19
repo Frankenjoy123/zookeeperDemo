@@ -9,6 +9,6 @@ public class SportServiceImpl implements ISportService {
 
     @Override
     public String doSport(String msg) {
-        return "do with " + msg ;
+        return "do sport with " + msg ;
     }
 }

@@ -1,5 +1,7 @@
 package com.joey.rpc.server;
 
+import com.joey.rpc.ISportService;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,18 +14,10 @@ public class ServerDemo {
     public static void main(String[] args) {
 
 
-        ServerSocket serverSocket;
-        try {
-            serverSocket = new ServerSocket(8888);
+        ISportService sportService = new SportServiceImpl();
 
-            while (true){
+        RpcServer rpcServer = new RpcServer();
+        rpcServer.publish(sportService , 8888);
 
-                Socket socket = serverSocket.accept();
-
-                ExecutorProcessHander.doProcess(new ProcessRunnale(socket));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
